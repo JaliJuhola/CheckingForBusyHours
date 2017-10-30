@@ -1,6 +1,13 @@
 # CheckingForBusyHours
 
 ### 1.Pip
-if you dont have install pip (in linux) `$ sudo apt-get install pip`
-after that install dependence  `$ pip install -r requirements.txt`
-Run 
+if you dont have install pip (in linux) `$ sudo apt-get -y install python3-pip
+cd /your/directory/with/this/repository
+after that install dependence  `$ pip3 install -r requirements.txt`
+
+### 2. Running program
+`$ sudo python3 ./busy_hours.py 2017-05-01 2017-06-15 <your_token_here>`
+You need to get api-token from giosg.
+
+
+
