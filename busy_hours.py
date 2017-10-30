@@ -29,7 +29,7 @@ def getThreeLargest(dailyStats):
 
 start_date = "2017-05-01"
 end_date = "2017-06-15"
-access_token = "38ab33b9f32a3478555d1e06189d50f01a872966"
+access_token = ""
 
 if len(sys.argv) == 4:  # Reading arguments if exists
     start_date = sys.argv[1]
