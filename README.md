@@ -1,8 +1,8 @@
 # CheckingForBusyHours
 
 ### 1.Pip
-if you dont have install pip (in linux) `$ sudo apt-get -y install python3-pip
-cd /your/directory/with/this/repository
+If you dont have install pip (in linux) `$ sudo apt-get -y install python3-pip`
+After that navigate to folder where repository is located `$ cd /your/directory/with/this/repository`
 after that install dependence  `$ pip3 install -r requirements.txt`
 
 ### 2. Running program
