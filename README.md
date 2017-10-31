@@ -11,6 +11,8 @@ After that install dependencies  `$ pip3 install -r requirements.txt`
 `$ sudo python3 ./busy_hours.py <start_date> <end_date> <your_token_here>`
 
 You need to get api-token from giosg.
+There is also possibility to use default values. api-token is not included so you have to add it.
+`$ sudo python3 ./busy_hours.py`
 
 
 
