@@ -8,7 +8,7 @@ After that navigate to folder where repository is located `$ cd /your/directory/
 After that install dependencies  `$ pip3 install -r requirements.txt`
 
 ### 2. Running program
-`$ sudo python3 ./busy_hours.py <start_date> <end_date> <your_token_here>`
+`$./busy_hours.py <start_date> <end_date> <your_token_here>`
 
 You need to get api-token from giosg.
 
