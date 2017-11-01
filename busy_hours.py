@@ -1,28 +1,35 @@
+#!/usr/bin/env python3
 import sys
 import requests
 import pandas as pd
 import json
+import string
 
-
-#Returns json type daily statistics
 def getDailyStats(startDate, endDate, accessToken):
+    """
+    Returns json type daily statistics
+    """
     queryStrings = {'start_date': startDate, 'end_date': endDate}
     headers = {'Authorization': 'Token ' + accessToken, 'Accept': 'application/json'}
     r = requests.get('https://api.giosg.com/api/reporting/v1/rooms/84e0fefa-5675-11e7-a349-00163efdd8db/chat-stats/daily/', params=queryStrings, headers=headers)
     return r.json()
 
-#Returns json type hourly statistics
 def getHourlyStats(date, accessToken):
+    """
+    Returns json type hourly statistics
+    """
     queryStrings = {'start_date': date, 'end_date': date}
     headers = {'Authorization': 'Token ' + accessToken, 'Accept': 'application/json'}
     r = requests.get('https://api.giosg.com/api/reporting/v1/rooms/84e0fefa-5675-11e7-a349-00163efdd8db/user-presence-counts', params=queryStrings, headers=headers)
     return r.json()
 
-#Returns three greatest conversation_count rows
 def getThreeLargest(dailyStats):
+    """
+    Returns three greatest conversation_count rows
+    """
     dailyStatsStr = json.dumps(dailyStats['by_date'])
     pdDailyStats = pd.read_json(dailyStatsStr)
-    result = pdDailyStats.sort_values(by='conversation_count', ascending=True).tail(3)
+    result = pdDailyStats.sort_values(by='conversation_count', ascending=False).head(3)
     return result.to_json(orient="index")
 
 
@@ -47,16 +54,15 @@ threeLargest = json.loads(threeLargest)
 for identifier in threeLargest:
 
     #Printing daily information
-    print("On " + str(dailyStats['by_date'][(int)(identifier)]['date'])  + " there were "+ str(threeLargest[identifier]['chats_from_visitor_count']) +" chats")
+    print('On: {date} there were {chat_count} chats'.format(date=dailyStats['by_date'][(int)(identifier)]['date'], chat_count=threeLargest[identifier]['conversation_count']))
     print("-----------------")
 
     #getting and printing hourly stats
     hourlyStats = getHourlyStats(str(dailyStats['by_date'][(int)(identifier)]['date']), access_token)
     for hour in hourlyStats['hourly']:
-        print(str(hour['hour_of_day']) +":00 there was " + str(hour['user_count']) +" users present")
-    
+       print('{hour}:00 there was  there were {user_count} users present'.format(hour=hour['hour_of_day'], user_count=hour['user_count']))
+
     #Two empty rows for esthetics
     print()
     print()
-    
 
