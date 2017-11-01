@@ -4,7 +4,9 @@
 If you dont have install pip3 (this works in linux) `$ sudo apt-get -y install python3-pip`
 
 After that navigate to folder where repository is located `$ cd /your/directory/with/this/repository`
+
 Add execution permission to file `$ chmod u+x name_of_script.py`
+
 After that install dependencies  `$ pip3 install -r requirements.txt`
 
 ### 2. Running program
